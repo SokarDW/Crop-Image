@@ -79,14 +79,12 @@ class CropImage:
                 while outputFile.is_file():
                     fileNameCounter+=1
                     outputFile = Path(self.outputFileName + str(fileNameCounter) + self.outputFileExtension)    
-
                 if(fileNameCounter > 0):
                     print('Output File Name: ' + self.outputFileName + str(fileNameCounter) + self.outputFileExtension)
                     cv2.imwrite(self.outputFileName + str(fileNameCounter) + self.outputFileExtension, roi)
                 else:
                     print('Output File Name: ' + self.outputFileName + self.outputFileExtension)
                     cv2.imwrite(self.outputFileName + self.outputFileExtension, roi)
-
                 scaleX = self.scaleValue
                 scaleY = self.scaleValue
                 scaleUp = cv2.resize(roi, None, fx= scaleX, fy= scaleY)
