@@ -31,14 +31,14 @@ class CropImage:
             i = self.image.copy()
             if scaleFactor < 0.1:
                 scaleFactor = 0.1
-            if cv2.getWindowProperty("image", cv2.WND_PROP_VISIBLE) <1:
-                break
+            #if cv2.getWindowProperty("image", cv2.WND_PROP_VISIBLE) <1: # Close window by clicking on the X in the frame. Disabled cause of compatibility problems with Raspberry OS.
+                #break
             if cv2.waitKey(33) == 27:
                 break
             if not self.cropping:
                 cv2.imshow("image", self.image)
             elif self.cropping:
-                cv2.rectangle(i, (self.x_start, self.y_start), (self.x_end, self.y_end), (255, 0, 0), 2)
+                cv2.rectangle(i, (self.x_start, self.y_start), (self.x_end, self.y_end), (0, 255, 255), 1)
                 cv2.imshow("image", i)
             cv2.waitKey(1)
         cv2.destroyAllWindows()
